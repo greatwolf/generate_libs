@@ -19,7 +19,8 @@ def CreateSConscript(lib_number, classes):
         
 def CreateSConstruct(libs):
     handle = open("SConstruct", "w"); 
-    handle.write("""env = Environment(CPPFLAGS=['-Wall'], CPPDEFINES=['LINUX'], CPPPATH=[Dir('#')])\n""")
+    handle.write("""import os\n
+env = Environment(tools=['mingw'], CPPFLAGS=['-g', '-O0', '-Wall', '-pedantic', '-pipe'], ENV=os.environ, CPPPATH=[Dir('#')])\n""")
     
     for i in range(libs):
         handle.write("""env.SConscript("lib_%s/SConscript", exports=['env'])\n""" % str(i))  
