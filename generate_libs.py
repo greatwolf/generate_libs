@@ -20,7 +20,7 @@ import sweetbuild
 import tundra
 import waf
 
-# generate_libs.py root 50 100 15 5
+# generate_libs.py root 50 100 20 5
 HELP_USAGE = """Usage: generate_libs.py root libs classes internal external.
     root     - Root directory where to create libs.
     libs     - Number of libraries (libraries only depend on those with smaller numbers)

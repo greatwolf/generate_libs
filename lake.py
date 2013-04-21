@@ -5,6 +5,9 @@ import cppcodebase
 import random
 
 LAKE = """--! /usr/bin/env lua
+-- For Win32 run as: 
+--   lake.lua CC=gcc
+--   lake.lua CC=gcc clean
 -- encoding: utf-8
 local libs    = %d
 local classes = %d
@@ -20,6 +23,7 @@ end
 local out = './bin'
 lfs.mkdir(out)
 local all = {}
+lake.set_flags { DEBUG = true }
 for i = 0, libs - 1 do
     local lib_i = 'lib_' .. i
 
@@ -30,7 +34,8 @@ for i = 0, libs - 1 do
         lib_i,
         src = join(i, classes),
         odir = out .. '/' .. lib_i,
-        incdir = '.'
+        incdir = '.',
+        flags = '-O0 -pedantic -pipe'
     }
 end
 

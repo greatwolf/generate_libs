@@ -25,7 +25,9 @@ def CreateFullJamfile(libs):
         handle.write('SubInclude TOP ' + cppcodebase.lib_name(i) + ' ;\n')
         
     handle = open("Jamrules", "w")
-    handle.write ('INCLUDES = $(TOP) ;\n')    
+    handle.write ('INCLUDES = $(TOP) ;\n')
+    handle.write('CCFLAGS = -g -O0 -Wall -pedantic -pipe ;\n')
+    handle.write('C++FLAGS = -g -O0 -Wall -pedantic -pipe ;\n')
 
 
 def CreateCodebase(libs, classes, internal_includes, external_includes):

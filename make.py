@@ -10,7 +10,7 @@ def CreateLibMakefile(lib_number, classes):
     handle = open("Makefile", "w");
     handle.write ("""COMPILER = g++
 INC = -I..
-CCFLAGS = -g -Wall $(INC)
+CCFLAGS = -g -O0 -Wall -pedantic -pipe $(INC)
 ARCHIVE = ar
 .SUFFIXES: .o .cpp
 
@@ -30,7 +30,7 @@ $(lib): $(objects)
 	$(ARCHIVE) cr $@ $^
 
 .cpp.o:
-	$(COMPILER) $(CCFLAGS) -c $<
+	$(COMPILER) -MMD -MT $@ -MF $@.d $(CCFLAGS) -c $< -o $@
 
 clean:
 	@del $(objects) $(lib)

@@ -38,8 +38,8 @@ local common =
 {
 	Env = {
 		CXXOPTS = {
-			{ "-pedantic", "-Wall", "-Werror"; Config = "*-mingw-*" },
-			{ "-g"; Config = "*-mingw-debug" },
+			{ "-pedantic", "-Wall", "-pipe"; Config = "*-mingw-*" },
+			{ "-g", "-O0"; Config = "*-mingw-debug" },
 			{ "-O2"; Config = { "*-mingw-release", "*-bcc-release" } },
 			{ "-v"; Config = "*-bcc-debug" },
 			{ "-WMC"; Config = "*-bcc-*" },
